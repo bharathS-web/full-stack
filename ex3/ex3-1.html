@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colour</title>
+
+    <script>
+        function changeBg(td_element) {
+            var Colour =  td_element.innerText;
+            td_element.style.backgroundColor = Colour;
+        }
+
+        function changeBg2normal(td_element) {
+            td_element.style.backgroundColor = "white"
+        }
+    </script>
+    <style>
+        td{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <td onmouseover="changeBg(this) " onmouseout="changeBg2normal(this)" >#000000</td>
+        <td onmouseover="changeBg(this) " onmouseout="changeBg2normal(this)" >#024f0f</td>
+        <td onmouseover="changeBg(this) " onmouseout="changeBg2normal(this)" >#024fa0</td>
+        <td onmouseover="changeBg(this) " onmouseout="changeBg2normal(this)" >#ff02f8</td>
+    </table>
+
+
+</body>
+</html>
