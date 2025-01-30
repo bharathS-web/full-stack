@@ -36,7 +36,11 @@
 
             function showImage(index) {
                 images.forEach((img, i) => {
-                    img.classList.toggle('active', i === index);
+                    if (i === index) {
+                        img.style.display = 'block';
+                    } else {
+                        img.style.display = 'none';
+                    }
                 });
             }
 
