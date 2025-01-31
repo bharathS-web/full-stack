@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function changeBg(ele) {
+            var c = ele.innerText;
+            ele.style.backgroundColor = c;
+        }
+        function changeBg2white(ele) {
+            ele.style.backgroundColor = "white";
+        }
+    </script>
+</head>
+<body>
+    
+    <table>
+        <td onmouseover="changeBg(this)" onmouseout="changeBg2white(this)">#00ff0f</td>
+        <td onmouseover="changeBg(this)" onmouseout="changeBg2white(this)">#012f0f</td>
+        <td onmouseover="changeBg(this)" onmouseout="changeBg2white(this)">#02134f</td>
+    </table>
+</body>
+</html>
