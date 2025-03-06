@@ -5,23 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Validation</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
         .error {
             color: red;
             display: none;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #45a049;
         }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('myForm');
-            const nameInput = document.getElementById('name');
-            const errorMessage = document.getElementById('error-message');
-
+            
             form.addEventListener('submit', function(event) {
+                let isValid = true;
+                
+                // Name validation
+                const nameInput = document.getElementById('name');
+                const nameError = document.getElementById('name-error');
                 if (nameInput.value.trim() === '') {
-                    errorMessage.style.display = 'block';
-                    event.preventDefault();
+                    nameError.style.display = 'block';
+                    isValid = false;
                 } else {
-                    errorMessage.style.display = 'none';
+                    nameError.style.display = 'none';
+                }
+                
+                // Email validation
+                const emailInput = document.getElementById('email');
+                const emailError = document.getElementById('email-error');
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(emailInput.value.trim())) {
+                    emailError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    emailError.style.display = 'none';
+                }
+                
+                // Age validation
+                const ageInput = document.getElementById('age');
+                const ageError = document.getElementById('age-error');
+                const ageValue = parseInt(ageInput.value);
+                if (isNaN(ageValue) || ageValue < 1 || ageValue > 120) {
+                    ageError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    ageError.style.display = 'none';
+                }
+                
+                // Message validation
+                const messageInput = document.getElementById('message');
+                const messageError = document.getElementById('message-error');
+                if (messageInput.value.trim().length < 10) {
+                    messageError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    messageError.style.display = 'none';
+                }
+                
+                if (!isValid) {
+                    event.preventDefault();
                 }
             });
         });
@@ -29,10 +108,30 @@
 </head>
 <body>
     <form id="myForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" >
-        <span id="error-message" class="error">This field is required.</span>
-        <br><br>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <span id="name-error" class="error">Please enter your name</span>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <span id="email-error" class="error">Please enter a valid email address</span>
+        </div>
+
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" min="1" max="120">
+            <span id="age-error" class="error">Please enter a valid age (1-120)</span>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+            <span id="message-error" class="error">Please enter a message (minimum 10 characters)</span>
+        </div>
+
         <button type="submit">Submit</button>
     </form>
 </body>
