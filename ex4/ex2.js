@@ -9,5 +9,5 @@ async function fetchData(url)
         console.error(error.message);
     }
 }
-const apiurl="https://www.example.com";
+const apiurl="https://www.google.com";
 fetchData(apiurl)

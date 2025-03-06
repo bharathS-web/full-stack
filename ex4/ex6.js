@@ -1,8 +1,10 @@
-const obj={name:"Arun",Age:25,city:"Madurai"};
+const obj={name:"Bharath",Age:20,city:"MRP"};
 for (const prop in obj)
 {
     console.log(`${prop}:${obj[prop]}`);
 }
+console.log("\n");
+
 delete obj['city'];
 for (const prop in obj)
 {
