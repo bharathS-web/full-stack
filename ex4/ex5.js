@@ -1,7 +1,9 @@
 const fs=require('fs');
 const inputstr=fs.readFile("ex4\\test.txt",function(err,data)
 {
-    if(err){console.error(err.message);}
+    if(err){
+        console.error(err.message);
+    }
     else{
         const regex=/a{2,}/;
         const repl='b';

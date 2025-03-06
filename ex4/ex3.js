@@ -1,4 +1,4 @@
-const urls="https://example.com:8000";
+const urls="https://google.com:8000";
 const {URL}=require("url");
 const myurl=new URL(urls);
 console.log(myurl.protocol);
