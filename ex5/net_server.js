@@ -1,18 +1,60 @@
 const net = require('net');
-const server = net.createServer((connection) => {
-    console.log("Client connected");
+const readline = require('readline');
 
-    connection.on('data', (data) => {
-        console.log("Received:", data.toString());
-        // Send a reply back to the client
-        connection.write(`Processed: ${data.toString()}`);
+const clients = [];
+
+// Create a readline interface for server input
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+const server = net.createServer((client) => {
+    console.log('New client connected');
+    clients.push(client);
+
+    // Notify all clients when a new client connects
+    broadcastMessage('A new user has joined the chat.');
+
+    client.on('data', (data) => {
+        const message = data.toString();
+        console.log(`${message}`);
+        
+        // Broadcast the message to all clients
+        broadcastMessage(message);
     });
 
-    connection.on('end', () => {
-        console.log("Client disconnected");
+    client.on('end', () => {
+        console.log('Client disconnected');
+        clients.splice(clients.indexOf(client), 1);
+        broadcastMessage('A user has left the chat.');
+    });
+
+    client.on('error', (err) => {
+        console.error(`Client error: ${err}`);
     });
 });
 
-server.listen(8080, () => {
-    console.log("Server is listening on port 8080");
+// Function to send a message to all clients
+function broadcastMessage(message) {
+    clients.forEach((client) => {
+        client.write(message);
+    });
+}
+
+// Function to handle server input
+function handleServerInput() {
+    rl.question('Server: ', (message) => {
+        if (message) {
+            broadcastMessage(`${message}`);
+        }
+        handleServerInput(); // Prompt for the next message
+    });
+}
+
+// Start the server
+const PORT = 8080;
+server.listen(PORT, () => {
+    console.log(`Chat server is running on port ${PORT}`);
+    handleServerInput(); // Start listening for server input
 });

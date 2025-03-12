@@ -1,25 +1,49 @@
 const http = require('http');
-const options = {
-    hostname: 'localhost',
-    port: 4000,
-    path: '/',
-    method: 'POST',
+const readline = require('readline');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+const sendMessage = (message) => {
+    const options = {
+        hostname: 'localhost',
+        port: 4000,
+        path: '/',
+        method: 'POST',
+    };
+
+    const req = http.request(options, (res) => {
+        let data = '';
+        res.on('data', (chunk) => {
+            data += chunk;
+        });
+        res.on('end', () => {
+            console.log(`Response from server: ${data}`);
+            // Prompt for the next message after receiving a response
+            promptForMessage();
+        });
+    });
+
+    req.write(message);
+    req.on('error', (error) => {
+        console.error(`Problem with request: ${error.message}`);
+    });
+
+    req.end();
 };
 
-const req = http.request(options, (res) => {
-    let data = '';
-    res.on('data', (chunk) => {
-        data += chunk;
+const promptForMessage = () => {
+    rl.question('Enter your message : ', (message) => {
+        if (message.toLowerCase() === 'exit') {
+            console.log('Exiting the chat. Goodbye!');
+            rl.close(); // Close the readline interface
+            return; // Exit the function
+        }
+        sendMessage(message);
     });
-    res.on('end', () => {
-        console.log(`Response from server: ${data}`);
-    });
-});
+};
 
-req.write('Hello, Server!');
-
-req.on('error', (error) => {
-    console.error(`Problem with request: ${error.message}`);
-});
-
-req.end();
+// Start the prompt for the first message
+promptForMessage();

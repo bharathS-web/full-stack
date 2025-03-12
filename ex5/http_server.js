@@ -1,4 +1,5 @@
 const http = require('http');
+
 const server = http.createServer((req, res) => {
     if (req.method === 'POST') {
         let body = '';
@@ -8,10 +9,10 @@ const server = http.createServer((req, res) => {
 
         req.on('end', () => {
             console.log(`Received message from client: ${body}`);
-            res.end('The length of the word is ' + body.length);
+            res.writeHead(200, { 'Content-Type': 'text/plain' });
+            res.end('The length of the message is ' + body.length);
         });
     } else {
-       
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end('Hello from the server!\n'); 
     }

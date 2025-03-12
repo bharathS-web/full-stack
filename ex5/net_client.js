@@ -1,27 +1,35 @@
 const net = require('net');
-const client = net.createConnection({ port:  8080 }, () => {
-    console.log("Connected to server");
-    const messages = ['s','u','d','h','a','r','s','a','n'];
-    let currentIndex = 0;
+const readline = require('readline');
 
-    // Send the first message immediately after connecting
-    client.write(messages[currentIndex]);
-    currentIndex++;
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-    client.on('data', (data) => {
-        console.log('Server reply:', data.toString());
-        
-        // Send the next message if available
-        if (currentIndex < messages.length) {
-            client.write(messages[currentIndex]);
-            currentIndex++;
-        } else {
-            // All messages sent; close the connection
-            client.end();
-        }
-    });
+const client = net.createConnection({ port: 8080 }, () => {
+    console.log("Connected to chat server");
+    askForInput();
+});
+
+client.on('data', (data) => {
+    process.stdout.write(data.toString() + '\n');
 });
 
 client.on('end', () => {
     console.log("Disconnected from server");
+    rl.close();
+});
+
+function askForInput() {
+    rl.question('You: ', (message) => {
+        if (message) {
+            client.write(` ${message}`);
+        }
+        askForInput();
+    });
+}
+
+process.on('SIGINT', () => {
+    client.write('exit');
+    client.end();
 });
