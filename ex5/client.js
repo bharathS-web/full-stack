@@ -21,7 +21,6 @@ const sendMessage = (message) => {
         });
         res.on('end', () => {
             console.log(`Response from server: ${data}`);
-            // Prompt for the next message after receiving a response
             promptForMessage();
         });
     });

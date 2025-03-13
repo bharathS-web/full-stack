@@ -9,8 +9,9 @@ const server = http.createServer((req, res) => {
 
         req.on('end', () => {
             console.log(`Received message from client: ${body}`);
+            const wordCount = body.trim().split(/\s+/).filter(word => word.length > 0).length;
             res.writeHead(200, { 'Content-Type': 'text/plain' });
-            res.end('The length of the message is ' + body.length);
+            res.end('The word count of the message is ' + wordCount);
         });
     } else {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
