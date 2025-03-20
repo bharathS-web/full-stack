@@ -5,14 +5,14 @@ const transporter = nodemailer.createTransport({
     port: 587, 
     secure: false,
     auth: {
-        user: 'bharathkumars2535@gmail.com',
+        user: 'mail@gmail.com',
         pass: 'zdja flhn ifmh zaho'
     }
 });
 
 const mailOptions = {
-    from: '"Bharath" <bharathkumas2535@gmail.com>', 
-    to: 'bharathkumars2535@gmail.com', 
+    from: '"Bharath" <@gmail.com>', 
+    to: '@gmail.com', 
     subject: 'Hello from Node.js - Nodemailer ', 
     text: 'BHARATH KUMAR S  \n This is a test email sent from a Node.js application!', 
     html: '<b>This is a test email sent from a Node.js application!</b>'
