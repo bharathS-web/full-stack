@@ -1,0 +1,104 @@
+/* src/Weather.css */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1e1e2f, #2a2a3c); /* Full-page gradient background */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather-container {
+    max-width: 600px;
+    width: 100%; /* Make it responsive */
+    margin: 20px; /* Add margin for spacing */
+    padding: 30px; /* Increased padding for better spacing */
+    border-radius: 15px;
+    background: rgba(40, 44, 52, 0.9); /* Semi-transparent dark background */
+    color: #ffffff; /* White text for visibility */
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); /* Deeper shadow for depth */
+    transition: transform 0.3s; /* Smooth scaling effect */
+}
+
+.weather-container:hover {
+    transform: scale(1.05); /* Slightly scale up on hover */
+}
+
+.weather-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.weather-input {
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    flex: 1;
+    transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+.weather-input:focus {
+    border-color: #0072ff; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(0, 114, 255, 0.5); /* Add shadow on focus */
+}
+
+.weather-button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0072ff; /* Primary button color */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+}
+
+.weather-button:hover {
+    background-color: #005bb5; /* Darker shade on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.error {
+    color: #ff4d4d;
+    font-weight: bold;
+    margin-top: 10px; /* Add margin for spacing */
+}
+
+.weather-info {
+    margin-top: 20px;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    padding: 15px;
+    border-radius: 10px; /* Rounded corners for info box */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+}
+
+.weather-info h2 {
+    font-size: 1.8em; /* Increased font size for headings */
+    margin: 10px 0;
+    color: #00ffcc; /* Bright color for headings */
+}
+
+.weather-info p {
+    margin: 5px 0; /* Add margin for spacing between paragraphs */
+    font-size: 1.2em; /* Slightly larger font size for readability */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .weather-container {
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+
+    .weather-info h2 {
+        font-size: 1.5em; /* Adjust heading size for smaller screens */
+    }
+
+    .weather-info p {
+        font-size: 1em; /* Adjust paragraph size for smaller screens */
+    }
+}

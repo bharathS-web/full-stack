@@ -1,0 +1,92 @@
+/* src/TodoList.css */
+body {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Full viewport height */
+  margin: 0; /* Remove default margin */
+  background-color: #f5f6fa; /* Light background color */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+}
+
+.todo-container {
+  max-width: 600px;
+  margin: 0 auto; /* Center the container */
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Deeper shadow for depth */
+  background-color: #ffffff; /* White background for the container */
+}
+
+h1, h2 {
+  color: #2c3e50; /* Dark color for headings */
+  margin-bottom: 20px; /* Space below headings */
+}
+
+input {
+  padding: 10px;
+  margin-right: 10px;
+  width: 70%;
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Rounded corners */
+  transition: border-color 0.3s; /* Smooth transition */
+}
+
+input:focus {
+  border-color: #3498db; /* Change border color on focus */
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); /* Add shadow on focus */
+}
+
+button {
+  padding: 10px 15px;
+  margin: 5px;
+  border: none; /* Remove default border */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #3498db; /* Primary button color */
+  color: white; /* Text color */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+}
+
+button:hover {
+  background-color: #2980b9; /* Darker shade on hover */
+  transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.filter-buttons {
+  margin: 10px 0;
+}
+
+.todo-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.todo-table th, .todo-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.todo-table th {
+  background-color: #f4f4f4; /* Light gray background for headers */
+  font-weight: bold; /* Bold text for headers */
+  color: #2c3e50; /* Dark color for header text */
+}
+
+.todo-table tr:nth-child(even) {
+  background-color: #f9f9f9; /* Zebra striping for rows */
+}
+
+.todo-table tr:hover {
+  background-color: #e9ecef; /* Highlight row on hover */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.todo-table td {
+  color: #34495e; /* Dark color for table cell text */
+}
