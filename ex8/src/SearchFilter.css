@@ -1,0 +1,50 @@
+/* src/SearchFilter.css */
+.search-filter-container {
+    max-width: 600px; /* Set a maximum width for the container */
+    margin: 50px auto; /* Center the container on the page */
+    padding: 20px; /* Add padding around the content */
+    border-radius: 10px; /* Rounded corners */
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    text-align: center; /* Center text */
+}
+
+.search-filter-container h2 {
+    font-size: 2em; /* Larger font size for the heading */
+    color: #333; /* Dark color for the heading */
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+.search-filter-input {
+    padding: 10px; /* Padding for the input */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #ccc; /* Light gray border */
+    width: 80%; /* Width of the input */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+.search-filter-input:focus {
+    border-color: #0072ff; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(0, 114, 255, 0.5); /* Add shadow on focus */
+}
+
+.search-filter-list {
+    list-style: none; /* Remove default list style */
+    padding: 0; /* Remove default padding */
+    margin-top: 20px; /* Space above the list */
+    text-align: left; /* Align text to the left for list items */
+}
+
+.search-filter-list li {
+    margin: 5px 0; /* Space between list items */
+    padding: 10px; /* Padding for list items */
+    border-radius: 5px; /* Rounded corners for list items */
+    background: rgba(240, 240, 240, 0.8); /* Light gray background for list items */
+    color: black; /* Set text color to black for visibility */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.search-filter-list li:hover {
+    background-color: rgba(200, 200, 200, 0.8); /* Darker background on hover */
+}

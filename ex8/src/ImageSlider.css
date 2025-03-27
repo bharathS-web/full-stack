@@ -1,0 +1,64 @@
+/* src/ImageSlider.css */
+.image-slider-container {
+    max-width: 800px; /* Set a maximum width for the slider */
+    margin: 50px auto; /* Center the slider on the page */
+    padding: 20px; /* Add padding around the content */
+    border-radius: 15px; /* Rounded corners */
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    text-align: center; /* Center text */
+}
+
+.image-slider-container h2 {
+    font-size: 2em; /* Larger font size for the heading */
+    color: #333; /* Dark color for the heading */
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+.image-slider-container img {
+    width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Rounded corners for the image */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.image-slider-container img:hover {
+    transform: scale(1.05); /* Slightly zoom in on hover */
+}
+
+.button-container {
+    margin-top: 20px; /* Space above the button container */
+}
+
+button {
+    padding: 10px 20px; /* Padding for buttons */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #0072ff; /* Primary button color */
+    color: white; /* White text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+    margin: 0 10px; /* Space between buttons */
+}
+
+button:hover {
+    background-color: #005bb5; /* Darker shade on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.indicator-container {
+    margin-top: 15px; /* Space above the indicator container */
+}
+
+.indicator {
+    display: inline-block; /* Inline block for spacing */
+    margin: 0 5px; /* Space between indicators */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1.5em; /* Size of the indicator */
+    color: black; /* Default color for indicators */
+    transition: color 0.3s; /* Smooth transition for color */
+}
+
+.indicator.active {
+    color: blue; /* Color for the active indicator */
+}
