@@ -16,8 +16,8 @@
 }
 
 .image-slider-container img {
-    width: 100%; /* Make the image responsive */
-    height: auto; /* Maintain aspect ratio */
+    height: 500px;
+    width : 650px;
     border-radius: 10px; /* Rounded corners for the image */
     transition: transform 0.3s ease; /* Smooth transition for hover effect */
 }
