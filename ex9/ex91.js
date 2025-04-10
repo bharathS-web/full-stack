@@ -22,13 +22,23 @@ var Emp = /** @class */ (function () {
 }());
 var P_Emp = /** @class */ (function (_super) {
     __extends(P_Emp, _super);
-    function P_Emp(n, id, salary) {
+    function P_Emp(n, id, salary, leavesTaken, leaveDeduction) {
+        if (leavesTaken === void 0) { leavesTaken = 0; }
+        if (leaveDeduction === void 0) { leaveDeduction = 0; }
         var _this = _super.call(this, n, id) || this;
         _this.mon_salary = salary;
+        _this.leavesTaken = leavesTaken;
+        _this.leaveDeduction = leaveDeduction;
         return _this;
     }
     P_Emp.prototype.calculateEarnings = function () {
-        return this.mon_salary;
+        // Calculate total deductions based on leaves taken
+        var totalDeductions = this.leavesTaken * this.leaveDeduction;
+        return this.mon_salary - totalDeductions;
+    };
+    // Method to set leaves taken
+    P_Emp.prototype.setLeavesTaken = function (leaves) {
+        this.leavesTaken = leaves;
     };
     return P_Emp;
 }(Emp));
@@ -45,7 +55,7 @@ var T_Emp = /** @class */ (function (_super) {
     };
     return T_Emp;
 }(Emp));
-var permanentEmployee = new P_Emp("Tamil", 1, 50000);
+var permanentEmployee = new P_Emp("Tamil", 1, 50000, 2, 200); // 2 leaves taken, $200 deduction per leave
 console.log(permanentEmployee);
 console.log("Total Earnings for ".concat(permanentEmployee.name, ": $").concat(permanentEmployee.calculateEarnings()));
 var temporaryEmployee = new T_Emp("Bharath", 2, 20, 40);

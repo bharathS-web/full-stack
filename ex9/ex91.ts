@@ -9,17 +9,27 @@ class Emp {
 }
 
 class P_Emp extends Emp {
-    mon_salary: number; 
+    private mon_salary: number; 
+    private leavesTaken: number; 
+    private leaveDeduction: number; // Deduction per leave
 
-    constructor(n: string, id: number, salary: number) {
+    constructor(n: string, id: number, salary: number, leavesTaken: number = 0, leaveDeduction: number = 0) {
         super(n, id); 
         this.mon_salary = salary;
+        this.leavesTaken = leavesTaken;
+        this.leaveDeduction = leaveDeduction;
     }
 
     calculateEarnings(): number {
-        return this.mon_salary;
+        // Calculate total deductions based on leaves taken
+        const totalDeductions = this.leavesTaken * this.leaveDeduction;
+        return this.mon_salary - totalDeductions;
     }
 
+    // Method to set leaves taken
+    setLeavesTaken(leaves: number): void {
+        this.leavesTaken = leaves;
+    }
 }
 
 class T_Emp extends Emp {
@@ -37,11 +47,10 @@ class T_Emp extends Emp {
     }
 }
 
-let permanentEmployee = new P_Emp("Tamil", 1, 50000);
+let permanentEmployee = new P_Emp("Tamil", 1, 50000, 2, 200); // 2 leaves taken, $200 deduction per leave
 console.log(permanentEmployee);
 console.log(`Total Earnings for ${permanentEmployee.name}: $${permanentEmployee.calculateEarnings()}`);
 
 let temporaryEmployee = new T_Emp("Bharath", 2, 20, 40);
 console.log(temporaryEmployee);
-
 console.log(`Total Earnings for ${temporaryEmployee.name}: $${temporaryEmployee.calculateEarnings()}`);
