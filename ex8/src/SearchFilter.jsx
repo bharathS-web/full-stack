@@ -28,12 +28,16 @@ const SearchFilter = () => {
         onChange={(e) => setSearchTerm(e.target.value)}
         className="search-filter-input" 
       />
-      <ul className="search-filter-list"> {}
-        {filteredItems.map(item => (
-          <li key={item.id}>
-            {item.name}
-          </li>
-        ))}
+      <ul className="search-filter-list">
+        {filteredItems.length > 0 ? (
+          filteredItems.map(item => (
+            <li key={item.id}>
+              {item.name}
+            </li>
+          ))
+        ) : (
+          <li>No data found</li>
+        )}
       </ul>
     </div>
   );

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Quiz</h1>
+        <form action="/submit" method="POST">
+            <div class="form-group">
+                <label for="username">Enter your name:</label>
+                <input type="text" class="form-control" name="username" id="username" placeholder="Your name" required>
+            </div>
+            <div class="quiz-questions">
+                <% questions.forEach((question) => { %>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= question.question %></h5>
+                            <% question.options.forEach((option) => { %>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="<%= question._id %>" value="<%= option %>" required>
+                                    <label class="form-check-label">
+                                        <%= option %>
+                                    </label>
+                                </div>
+                            <% }); %>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
