@@ -32,7 +32,7 @@ const Score = mongoose.model('Score', scoreSchema);
 // Routes
 app.get('/', async (req, res) => {
     const questions = await Quiz.find();
-    res.render('quiz', { questions: questions });
+    res.render('quizIndex', { questions: questions });
 });
 
 app.post('/submit', async (req, res) => {
@@ -45,8 +45,7 @@ app.post('/submit', async (req, res) => {
         }
     });
 
-    // Save the score to the database
-    const username = req.body.username || 'Anonymous'; // Get username from the request body
+    const username = req.body.username || 'Anonymous'; 
     const newScore = new Score({
         username: username,
         score: score
@@ -54,9 +53,9 @@ app.post('/submit', async (req, res) => {
 
     await newScore.save();
 
-    res.render('result', { score: score, total: questions.length });
+    res.render('quizResults', { score: score, total: questions.length });
 });
 
 app.listen(3000, () => {
-    console.log(`Server is running on http://localhost:3000}`);
+    console.log(`Server is running on http://localhost:3000`);
 });

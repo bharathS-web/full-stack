@@ -1,6 +1,6 @@
-// src/SearchFilter.jsx
+// src/SearchFilter.jsx 
 import React, { useState } from 'react';
-import './SearchFilter.css'; // Import the CSS file
+import './SearchFilter.css'; 
 
 const SearchFilter = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -9,9 +9,9 @@ const SearchFilter = () => {
     { id: 1, name: 'Apple' },
     { id: 2, name: 'Banana' },
     { id: 3, name: 'Cherry' },
-    { id: 4, name: 'Dates' },
-    { id: 5, name: 'Pine Apple' },
-    { id: 6, name: 'Dragon Fruit'}
+    { id: 4, name: 'Dates' }, 
+    { id: 5, name: 'Pine Apple' }, 
+    { id: 6, name: 'Dragon Fruit'} 
   ]);
 
   const filteredItems = items.filter(item =>
