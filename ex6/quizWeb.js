@@ -56,6 +56,6 @@ app.post('/submit', async (req, res) => {
     res.render('quizResults', { score: score, total: questions.length });
 });
 
-app.listen(3000, () => {
-    console.log(`Server is running on http://localhost:3000`);
+app.listen(3001, () => {
+    console.log(`Server is running on http://localhost:3001`);
 });

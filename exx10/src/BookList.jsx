@@ -28,8 +28,10 @@ const BookList = () => {
           onChange={(e) => setReleaseYear(e.target.value)}
         >
           <option value="">All</option>
+          <option value="2019">2019</option>
           <option value="2020">2020</option>
           <option value="2021">2021</option>
+          <option value="2023">2023</option>
           {/* Add more years as needed */}
         </select>
 
@@ -58,18 +60,23 @@ const BookList = () => {
           </tr>
         </thead>
         <tbody>
-  {filteredBooks.map(book => (
-    <tr key={book.id}>
-      <td><img src={book.image} alt={book.title} /></td>
-      <td>{book.title}</td>
-      <td>{book.author}</td>
-      <td>{book.publisher}</td>
-      <td>{book.release_year}</td>
-      <td>${book.price.toFixed(2)}</td>
-    </tr>
-  ))}
-</tbody>
-
+          {filteredBooks.length > 0 ? (
+            filteredBooks.map(book => (
+              <tr key={book.id}>
+                <td><img src={book.image} alt={book.title} /></td>
+                <td>{book.title}</td>
+                <td>{book.author}</td>
+                <td>{book.publisher}</td>
+                <td>{book.release_year}</td>
+                <td>${book.price.toFixed(2)}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="6" style={{ textAlign: 'center' }}>No Books Found For This Filter</td>
+            </tr>
+          )}
+        </tbody>
       </table>
     </div>
   );
