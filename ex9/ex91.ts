@@ -11,7 +11,7 @@ class Emp {
 class P_Emp extends Emp {
     private mon_salary: number; 
     private leavesTaken: number; 
-    private leaveDeduction: number; // Deduction per leave
+    private leaveDeduction: number; 
 
     constructor(n: string, id: number, salary: number, leavesTaken: number = 0, leaveDeduction: number = 0) {
         super(n, id); 
@@ -21,12 +21,10 @@ class P_Emp extends Emp {
     }
 
     calculateEarnings(): number {
-        // Calculate total deductions based on leaves taken
         const totalDeductions = this.leavesTaken * this.leaveDeduction;
         return this.mon_salary - totalDeductions;
     }
 
-    // Method to set leaves taken
     setLeavesTaken(leaves: number): void {
         this.leavesTaken = leaves;
     }
@@ -47,7 +45,8 @@ class T_Emp extends Emp {
     }
 }
 
-let permanentEmployee = new P_Emp("Tamil", 1, 50000, 2, 200); // 2 leaves taken, $200 deduction per leave
+
+let permanentEmployee = new P_Emp("Tamil", 1, 50000, 2, 200); 
 console.log(permanentEmployee);
 console.log(`Total Earnings for ${permanentEmployee.name}: $${permanentEmployee.calculateEarnings()}`);
 
