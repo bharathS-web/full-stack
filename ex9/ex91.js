@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -13,6 +14,8 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+Object.defineProperty(exports, "__esModule", { value: true });
+var readline = require("readline");
 var Emp = /** @class */ (function () {
     function Emp(n, id) {
         this.name = n;
@@ -32,13 +35,8 @@ var P_Emp = /** @class */ (function (_super) {
         return _this;
     }
     P_Emp.prototype.calculateEarnings = function () {
-        // Calculate total deductions based on leaves taken
         var totalDeductions = this.leavesTaken * this.leaveDeduction;
         return this.mon_salary - totalDeductions;
-    };
-    // Method to set leaves taken
-    P_Emp.prototype.setLeavesTaken = function (leaves) {
-        this.leavesTaken = leaves;
     };
     return P_Emp;
 }(Emp));
@@ -55,9 +53,41 @@ var T_Emp = /** @class */ (function (_super) {
     };
     return T_Emp;
 }(Emp));
-var permanentEmployee = new P_Emp("Tamil", 1, 50000, 2, 200); // 2 leaves taken, $200 deduction per leave
-console.log(permanentEmployee);
-console.log("Total Earnings for ".concat(permanentEmployee.name, ": $").concat(permanentEmployee.calculateEarnings()));
-var temporaryEmployee = new T_Emp("Bharath", 2, 20, 40);
-console.log(temporaryEmployee);
-console.log("Total Earnings for ".concat(temporaryEmployee.name, ": $").concat(temporaryEmployee.calculateEarnings()));
+// Create readline interface
+var rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+// Function to get input for permanent employee
+function getPermanentEmployeeInput() {
+    rl.question('Enter name for Permanent Employee: ', function (name) {
+        rl.question('Enter ID for Permanent Employee: ', function (id) {
+            rl.question('Enter monthly salary for Permanent Employee: ', function (salary) {
+                rl.question('Enter number of leaves taken: ', function (leaves) {
+                    rl.question('Enter leave deduction amount: ', function (deduction) {
+                        var permanentEmployee = new P_Emp(name, parseInt(id), parseFloat(salary), parseInt(leaves), parseFloat(deduction));
+                        console.log(permanentEmployee);
+                        console.log("Total Earnings for ".concat(permanentEmployee.name, ": $").concat(permanentEmployee.calculateEarnings()));
+                        getTemporaryEmployeeInput(); // Proceed to get temporary employee input
+                    });
+                });
+            });
+        });
+    });
+}
+// Function to get input for temporary employee
+function getTemporaryEmployeeInput() {
+    rl.question('Enter name for Temporary Employee: ', function (name) {
+        rl.question('Enter ID for Temporary Employee: ', function (id) {
+            rl.question('Enter hourly rate for Temporary Employee: ', function (hrlyRate) {
+                rl.question('Enter hours worked for Temporary Employee: ', function (hoursWorked) {
+                    var temporaryEmployee = new T_Emp(name, parseInt(id), parseFloat(hrlyRate), parseInt(hoursWorked));
+                    console.log(temporaryEmployee);
+                    console.log("Total Earnings for ".concat(temporaryEmployee.name, ": $").concat(temporaryEmployee.calculateEarnings()));
+                    rl.close(); // Close the readline interface
+                });
+            });
+        });
+    });
+}
+getPermanentEmployeeInput();
