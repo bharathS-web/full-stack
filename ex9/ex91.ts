@@ -47,6 +47,7 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
+
 function getPermanentEmployeeInput() {
     rl.question('Enter name for Permanent Employee: ', (name) => {
         rl.question('Enter ID for Permanent Employee: ', (id) => {

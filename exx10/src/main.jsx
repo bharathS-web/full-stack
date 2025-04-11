@@ -7,7 +7,7 @@ import BookList from './BookList.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {/* <Counter /> */}
-    <BookList />
+    <Counter />
+    {/* <BookList /> */}
   </StrictMode>,
 )
