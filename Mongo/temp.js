@@ -19,10 +19,13 @@ const surveySchema = new mongoose.Schema({
 
 const Survey = mongoose.model('details', surveySchema);
 
+
+
 // Routes
 app.get('/', (req, res) => {
     res.render('details'); // your form page
 });
+
 
 app.post('/submit', async (req, res) => {
     const newSurvey = new Survey({
@@ -32,12 +35,17 @@ app.post('/submit', async (req, res) => {
 
     await newSurvey.save();
     res.redirect('/results');
+    
 });
 
+
 app.get('/results', async (req, res) => {
+
         const allEntries = await Survey.find();
-        res.render('detailsRes', { entries: allEntries }); // match EJS file name
+        res.render('detailsRes', { entries: allEntries }); 
+
 });
+
 
 app.listen(3002, () => {
     console.log(`Server is running on http://localhost:3002`);

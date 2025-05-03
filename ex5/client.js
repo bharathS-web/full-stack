@@ -1,10 +1,5 @@
 const http = require('http');
-const readline = require('readline');
-
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+const prompt = require('prompt-sync')();  
 
 const sendMessage = (message) => {
     const options = {
@@ -26,23 +21,17 @@ const sendMessage = (message) => {
     });
 
     req.write(message);
-    req.on('error', (error) => {
-        console.error(`Problem with request: ${error.message}`);
-    });
-
     req.end();
 };
 
 const promptForMessage = () => {
-    rl.question('Enter your message : ', (message) => {
-        if (message.toLowerCase() === 'exit') {
-            console.log('Exiting the chat. Goodbye!');
-            rl.close(); // Close the readline interface
-            return; // Exit the function
-        }
-        sendMessage(message);
-    });
+    const message = prompt('Enter your message: ');
+    if (message.toLowerCase() === 'exit') {
+        console.log('Exiting the chat. Goodbye!');
+        return;
+    }
+    sendMessage(message);
 };
 
-// Start the prompt for the first message
+// Start prompt loop
 promptForMessage();
