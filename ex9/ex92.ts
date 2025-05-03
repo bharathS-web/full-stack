@@ -1,6 +1,7 @@
 // import promptSync from 'prompt-sync';
 
 class Stack<T> {
+    
     private items: T[] = [];
 
     push(item: T): void {

@@ -19,7 +19,7 @@ const surveySchema = new mongoose.Schema({
     reason: { type: String, required: true }
 });
 
-const Survey = mongoose.model('Survey', surveySchema);
+const Survey = mongoose.model('Survey', surveySchema );
 
 // Routes
 app.get('/', (req, res) => {
@@ -44,7 +44,7 @@ app.post('/submit', async (req, res) => {
 
 app.get('/results', async (req, res) => {
     try {
-        const responses = await Survey.find();
+        const responses = await Survey.find(); 
         res.render('results', { responses: responses });
     } catch (error) {
         console.error('Error fetching results:', error);
@@ -53,6 +53,7 @@ app.get('/results', async (req, res) => {
 });
 
 // Start the server
-app.listen(3000, () => {
-    console.log(`Server is running on http://localhost:3000`);
+app.listen(3002
+    , () => {
+    console.log(`Server is running on http://localhost:3002`);
 });

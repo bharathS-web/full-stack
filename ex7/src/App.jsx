@@ -19,13 +19,17 @@
 import React from 'react';
 import StudentMarks from './StudentMarks';
 import TodoList from './ToDoList';
+import Weather from './Weather';
+// import TodoList from './ToDoList';
 
 const App = () => {
 
   return (
     <div className="app-container">
       <h1 className="main-heading">Student Marks System</h1>
+      <TodoList />
       <StudentMarks />
+      <Weather />
     </div>
 
 

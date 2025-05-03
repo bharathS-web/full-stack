@@ -5,7 +5,8 @@ var books = [
     { title: "Pride and Prejudice", author: "Jane Austen", publisher: "T. Egerton" },
     { title: "Brave New World", author: "Aldous Huxley", publisher: "Chatto & Windus" }
 ];
-books.sort(function (a, b) { return a.author.localeCompare(b.author); });
+// books.sort((a,b)=>b.author.localeCompare(a.author));
+books.sort();
 console.log("Books sorted by author:");
 books.forEach(function (book) {
     console.log("Title: \"".concat(book.title, "\", Author: ").concat(book.author, ", Publisher: ").concat(book.publisher));

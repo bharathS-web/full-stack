@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Survey Results</title>
+</head>
+<body>
+    <h1>Survey Entries</h1>
+
+    <% if (entries.length === 0) { %>
+        <p>No entries found.</p>
+    <% } else { %>
+        <ul>
+            <% entries.forEach(entry => { %>
+                <li><strong>Name:</strong> <%= entry.name %> | <strong>Age:</strong> <%= entry.age %></li>
+            <% }) %>
+        </ul>
+    <% } %>
+
+    <a href="/">Back to form</a>
+</body>
+</html>

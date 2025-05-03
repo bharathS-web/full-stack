@@ -5,7 +5,8 @@
     "express": "^4.21.2",
     "mongoose": "^8.13.2",
     "nodemailer": "^6.10.0",
-    "prompt-sync": "^4.2.0"
+    "prompt-sync": "^4.2.0",
+    "readline-sync": "^1.4.10"
   },
   "devDependencies": {
     "@types/node": "^22.14.0"

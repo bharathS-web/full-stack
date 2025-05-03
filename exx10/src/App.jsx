@@ -6,7 +6,7 @@ import BookList from './BookList.jsx'
 function App() {
   return (
     <div>
-      {/* <Counter /> */}
+      <Counter />
     <BookList />
     </div>
   );
