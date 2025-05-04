@@ -4,6 +4,8 @@ for (const prop in obj)
 {
     console.log(`${prop}:${obj[prop]}`);
 }
+
+
 console.log("\n");
 
 delete obj['city'];

@@ -42,7 +42,6 @@
 }
 
 
-/* App.css */
 .app-container {
   max-width: 800px;
   margin: 0 auto;
@@ -59,7 +58,6 @@
   letter-spacing: 2px;
 }
 
-/* Optional: Add some global styles */
 body {
   background-color: #f5f6fa;
   margin: 0;

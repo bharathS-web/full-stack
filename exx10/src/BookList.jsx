@@ -8,6 +8,7 @@ const BookList = () => {
   const [publisher, setPublisher] = useState('');
 
   const uniquePublishers = [...new Set(books.map(book => book.publisher))];
+  const uniqueReleaseYears = [...new Set(books.map(book => String(book.release_year)))];
 
   const filteredBooks = books.filter(book => {
     return (
@@ -15,7 +16,7 @@ const BookList = () => {
       (publisher ? book.publisher === publisher : true)
     );
   });
-
+ 
   return (
     <div>
       <h1>Book List</h1>
@@ -28,11 +29,12 @@ const BookList = () => {
           onChange={(e) => setReleaseYear(e.target.value)}
         >
           <option value="">All</option>
-          <option value="2019">2019</option>
-          <option value="2020">2020</option>
-          <option value="2021">2021</option>
-          <option value="2023">2023</option>
-          {/* Add more years as needed */}
+          {
+            uniqueReleaseYears.map((yr,i)=>{
+              <option key={i} value={yr}>{yr}</option>
+            })
+          }
+          
         </select>
 
         <label htmlFor="publisher">Filter by Publisher:</label>

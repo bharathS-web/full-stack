@@ -5,8 +5,7 @@ interface Product {
   name: string;
   price: number;
 }
-
-const products: Product[] = [
+ const products: Product[] = [
   { id: 1, name: 'Laptop', price: 999 },
   { id: 2, name: 'Phone', price: 499 },
   { id: 3, name: 'Tablet', price: 299 },

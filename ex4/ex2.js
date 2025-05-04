@@ -2,7 +2,7 @@ const https = require('https');
 
 const url = 'https://jsonplaceholder.typicode.com/posts/1';
 
-https.get(url, {rejectUnauthorized:false} ,(res) => {
+https.get(url ,(res) => {
     let data = '';
 
     res.on('data', (chunk) => {

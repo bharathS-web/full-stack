@@ -6,10 +6,14 @@
     <title>Pop-up Test</title>
     <script>
         function openPopup(url) {
-            var popup = document.open(url);
+            // var popup = document.open(url);
+            var popup = window.open(url)
             if (!popup || popup.closed || typeof popup.closed == 'undefined') {
+                alert("Error - PopUp");
+                // window.location.href = url; 
                 window.location.href = 'error.html'; 
             }
+
         }
     </script>
 </head>

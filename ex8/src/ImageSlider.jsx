@@ -5,6 +5,7 @@ import image1 from "./assets/images.jpg";
 import image2 from "./assets/images1.jpg";
 import image3 from "./assets/images2.jpg";
 
+
 const images = [
   { id: 1, url: image1 },
   { id: 2, url: image2 },
@@ -32,6 +33,7 @@ const ImageSlider = () => {
         <button onClick={prevImage}>Previous</button>
         <button onClick={nextImage}>Next</button>
       </div>
+
       <div className="indicator-container">
         {images.map((_, index) => (
           <span 
@@ -39,7 +41,7 @@ const ImageSlider = () => {
             className={`indicator ${activeIndex === index ? 'active' : ''}`}
             onClick={() => setActiveIndex(index)}
           >
-            ●
+            O
           </span>
         ))}
       </div>
