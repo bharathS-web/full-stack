@@ -23,7 +23,7 @@ client.on('end', () => {
 function askForInput() {
     rl.question('You: ', (message) => {
         if (message) {
-            client.write(` ${message}`);
+            client.write(`\r Client: ${message}`);
         }
         askForInput();
     });

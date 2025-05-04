@@ -1,5 +1,6 @@
 const net = require('net');
 const readline = require('readline');
+const p = require('prompt-sync')();
 
 const clients = [];
 
@@ -10,17 +11,13 @@ const rl = readline.createInterface({
 });
 
 const server = net.createServer((client) => {
-    console.log('New client connected');
-    clients.push(client);
 
-    // Notify all clients when a new client connects
-    broadcastMessage('A new user has joined the chat.');
+    clients.push(client);
 
     client.on('data', (data) => {
         const message = data.toString();
         console.log(`${message}`);
         
-        // Broadcast the message to all clients
         broadcastMessage(message);
     });
 
@@ -30,15 +27,13 @@ const server = net.createServer((client) => {
         broadcastMessage('A user has left the chat.');
     });
 
-    client.on('error', (err) => {
-        console.error(`Client error: ${err}`);
-    });
+    
 });
 
 // Function to send a message to all clients
 function broadcastMessage(message) {
     clients.forEach((client) => {
-        client.write(message);
+        client.write(`\r Server :${message}`);
     });
 }
 
@@ -48,7 +43,7 @@ function handleServerInput() {
         if (message) {
             broadcastMessage(`${message}`);
         }
-        handleServerInput(); // Prompt for the next message
+        handleServerInput();
     });
 }
 
